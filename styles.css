@@ -1,0 +1,513 @@
+/* Fondo animado */
+#background {
+    position: fixed; /* Cambiado de absolute a fixed */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Usar vw para el ancho completo de la ventana */
+    height: 100vh; /* Usar vh para la altura completa de la ventana */
+    z-index: -1;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1f1f1f, #343a40);
+}
+
+.custom-button {
+    background-color: #007bff; /* Color azul primario */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
+}
+
+.custom-button:hover {
+    background-color: #0056b3; /* Color más oscuro al pasar el mouse */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el mouse */
+}
+
+.icon {
+    margin-right: 8px; /* Espaciado entre el icono y el texto */
+    vertical-align: middle; /* Alinear verticalmente el icono */
+}
+
+
+/* Estilo para las figuras en el fondo */
+.figure {
+    position: absolute;
+    width: 100px; /* Ajusta el tamaño de las figuras */
+    height: 100px; /* Ajusta el tamaño de las figuras */
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    animation: move 20s infinite ease-in-out;
+}
+
+/* Configuraciones iniciales para las figuras */
+.figure1 {
+    top: 10%;
+    left: 5%;
+}
+
+.figure2 {
+    top: 60%;
+    left: 80%;
+}
+
+.figure3 {
+    top: 20%;
+    left: 30%;
+}
+
+.figure4 {
+    top: 40%;
+    left: 50%;
+}
+
+.figure5 {
+    top: 70%;
+    left: 10%;
+}
+
+/* Animación para las figuras */
+@keyframes move {
+    0% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(100px, 100px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+/* Estilos para el body */
+body {
+    margin: 0;
+    overflow-y: scroll; /* Asegura que el scroll esté habilitado */
+    scrollbar-width: thin; /* Scrollbar fino para Firefox */
+}
+
+/* Scrollbar para navegadores WebKit */
+body::-webkit-scrollbar {
+    width: 8px; /* Ancho del scrollbar */
+}
+
+/* Thumb del scrollbar con degradado */
+body::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #ffc107, #ff5733); /* Degradado del thumb */
+    border-radius: 10px; /* Bordes redondeados */
+    transition: background 0.3s ease; /* Transición suave para el hover */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #ff5733, #ffc107); /* Degradado al pasar el ratón */
+}
+
+/* Scrollbar track */
+body::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.7); /* Color del fondo del scrollbar */
+    border-radius: 10px; /* Bordes redondeados para la pista */
+    margin: 4px; /* Espacio alrededor del thumb */
+}
+
+/* Efecto de movimiento suave al desplazarse */
+html {
+    scroll-behavior: smooth; /* Desplazamiento suave */
+}
+
+
+/* Navbar */
+.navbar {
+    background-color: #343a40;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.2rem;
+    color: #f8f9fa;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffc107;
+}
+
+/* Contenido principal */
+.container {
+    margin-top: 50px;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #ffc107;
+}
+
+p.lead {
+    font-size: 1.5rem;
+    color: #f8f9fa;
+}
+
+/* Botones */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Botones de donación */
+.btn-success, .btn-warning {
+    margin: 10px;
+}
+
+.btn-success:hover, .btn-warning:hover {
+    opacity: 0.8;
+}
+
+/* Testimonios */
+.card {
+    border: none;
+    background-color: #212529;
+    color: #f8f9fa;
+    transition: transform 0.3s ease;
+}
+
+.slider {
+    background-color: #f0f0f0; /* Color de fondo del deslizador */
+    /* Otras propiedades */
+}
+
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card-body {
+    padding: 20px;
+    background-color: #343a40;
+    border-radius: 10px;
+}
+
+.blockquote-footer {
+    font-size: 0.9rem;
+    color: #ffc107;
+}
+
+/* Estilos del carrito en servicios.html */
+.navbar .badge {
+    background-color: #ffc107;
+}
+
+h1 {
+    color: #007bff;
+}
+
+/* Estilo para las tarjetas de productos */
+.card {
+    margin-bottom: 30px;
+    background-color: #212529;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+    border-radius: 10px 10px 0 0;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+    background-color: #343a40;
+}
+
+.card-title {
+    color: #ffc107;
+    font-size: 1.5rem;
+}
+
+.card-text {
+    color: #adb5bd;
+}
+
+.close-btn {
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    font-size: 1.5rem; /* Tamaño de la fuente */
+    color: red; /* Color de la "X" */
+    margin-left: 10px; /* Espacio a la izquierda */
+}
+
+.close-btn:hover {
+    color: darkred; /* Cambia el color al pasar el mouse */
+}
+ 
+ .close-btn-custom {
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    font-size: 1.5rem; /* Tamaño de la fuente */
+    color: red; /* Color de la "X" */
+    margin-left: 10px; /* Espacio a la izquierda */
+    transition: color 0.3s ease; /* Transición suave para el color */
+    padding: 5px; /* Espacio interno */
+    border-radius: 50%; /* Bordes redondeados */
+}
+
+.close-btn-custom:hover {
+    color: darkred; /* Cambia el color al pasar el mouse */
+    background-color: rgba(255, 0, 0, 0.1); /* Fondo ligero al pasar el mouse */
+}
+.sidebar-buttons {
+    position: fixed; /* Fija el div en la posición deseada */
+    left: 0; /* Ubica el div a la izquierda */
+    bottom: 0; /* Coloca el div en el fondo de la página */
+    display: flex; /* Usar flexbox para alinear los elementos */
+    flex-direction: column; /* Alinea los elementos en una columna */
+    gap: 10px; /* Espaciado entre los botones */
+    padding-left: 10px; /* Añade un poco de padding para evitar que los íconos estén pegados al borde */
+}
+
+
+.sidebar-buttons a {
+    opacity: 0; /* Comienza oculto para la animación */
+    transform: translateY(20px); /* Desplazamiento hacia abajo */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transición suave */
+}
+
+/* Animación al pasar el mouse */
+.sidebar-buttons a:hover {
+    opacity: 1; /* Se muestra al pasar el mouse */
+    transform: translateY(0); /* Regresa a su posición original */
+}
+
+.sidebar-buttons a img {
+    width: 30px; /* Ajusta el tamaño de los íconos según sea necesario */
+    height: auto; /* Mantiene la proporción del ícono */
+}
+
+/* Estilo de los botones al cargar */
+.sidebar-buttons a.show {
+    opacity: 1; /* Se muestra al cargar */
+    transform: translateY(0); /* Regresa a su posición original */
+}
+
+/* Añadir un estilo para la animación de los botones al cargar */
+.sidebar-buttons a {
+    animation: fadeIn 0.5s forwards; /* Animación de entrada */
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0; /* Comienza oculto */
+        transform: translateY(20px); /* Empieza desde abajo */
+    }
+    100% {
+        opacity: 1; /* Se muestra completamente */
+        transform: translateY(0); /* Posición original */
+    }
+}
+
+.btn-primary {
+    background-color: #ffc107;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #ffca2c;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+.btn-light {
+    color: #212529;
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+}
+
+    .btn-lg {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    .card img {
+        max-height: 150px;
+    }
+}
+
+/* Sidebar del carrito */
+.cart-sidebar {
+    position: fixed;
+    right: -100%;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #343a40;
+    color: #f8f9fa;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.cart-sidebar.open {
+    right: 0;
+}
+
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 999;
+}
+
+.cart-overlay.active {
+    display: block;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cart-header h5 {
+    margin: 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #f8f9fa;
+    font-size: 1.5rem;
+}
+
+.cart-body {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.cart-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #495057;
+    border-radius: 5px;
+}
+
+.cart-footer {
+    margin-top: 20px;
+}
+
+.btn-animated {
+    position: relative;
+    overflow: hidden; /* Para que el pseudo-elemento se mantenga dentro del botón */
+    transition: background-color 0.3s ease; /* Transición suave para el fondo */
+}
+
+.btn-animated::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 300%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2); /* Color del efecto */
+    transform: translateX(-50%) translateY(-100%); /* Comienza desde arriba */
+    transition: transform 0.5s ease; /* Transición para el efecto */
+    z-index: 0; /* Detrás del texto */
+}
+
+.btn-animated:hover {
+    background-color: rgba(255, 255, 255, 0.5); /* Color de fondo al pasar el mouse */
+    color: #343a40; /* Cambia el color del texto */
+}
+
+.btn-animated:hover::after {
+    transform: translateX(-50%) translateY(0); /* Baja el efecto al hacer hover */
+}
+
+/* Sombra del botón */
+.btn-animated {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra del botón */
+}
+
+.btn-animated:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Sombra más pronunciada al hacer hover */
+}
+
+
+/* Estilos para el carrito */
+.cart-sidebar {
+    position: fixed;
+    right: -300px;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #343a40;
+    color: #1464b4;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    padding: 20px;
+    box-shadow: -3px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.cart-sidebar.open {
+    right: 0;
+}
+
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 999;
+}
+
+.cart-overlay.active {
+    display: block;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cart-body {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.cart-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #495057;
+    border-radius: 5px;
+}
+
+.cart-footer {
+    margin-top: 20px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #f8f9fa;
+    font-size: 
