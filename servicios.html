@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios - E-commerce</title>
+    <link rel="icon" href="images/ia.png" type="image/png"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilo del carrito lateral */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px; /* Comienza oculto */
+            width: 300px;
+            height: 100%;
+            background-color: #fff;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+            transition: right 0.3s ease; /* Efecto suave al abrir/cerrar */
+            z-index: 1000; /* Asegúrate de que esté en la parte superior */
+        }
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none; /* Oculto por defecto */
+            z-index: 999; /* Detrás del carrito */
+        }
+        .cart-header {
+            padding: 1rem;
+            background-color: #343a40;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        /* Estilos del scrollbar aquí, si lo necesitas */
+        body {
+            margin: 0;
+            overflow-y: scroll; /* Asegura que el scroll esté habilitado */
+            scrollbar-width: thin; /* Scrollbar fino para Firefox */
+        }
+        body::-webkit-scrollbar {
+            width: 8px; /* Ancho del scrollbar */
+        }
+        body::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #ffc107, #ff5733); /* Degradado del thumb */
+            border-radius: 10px; /* Bordes redondeados */
+        }
+        body::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.7); /* Color del fondo del scrollbar */
+            border-radius: 10px; /* Bordes redondeados para la pista */
+            margin: 4px; /* Espacio alrededor del thumb */
+        }
+        /* Estilo para los botones laterales */
+        .sidebar-buttons {
+            position: fixed;
+            left: 10px;
+            top: 100px; /* Ajusta la posición vertical según sea necesario */
+            z-index: 1001; /* Asegúrate de que estén en la parte superior */
+        }
+        .sidebar-buttons img {
+            display: block;
+            margin: 10px 0; /* Espacio entre botones */
+            width: 50px; /* Ajusta el tamaño de los íconos */
+            height: auto; /* Mantiene la proporción */
+        }
+    </style>
+</head>
+<body>  
+    <!-- Modal -->
+    <div class="modal fade" id="servicesModal" tabindex="-1" aria-labelledby="servicesModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="servicesModalLabel">Bienvenidos a todos</h5>
+                    <span class="close-btn-custom" data-bs-dismiss="modal" aria-label="Close">&times;</span>
+                </div>
+                <div class="modal-body">
+                     Estoy en un viaje para transformar ideas en realidad a través de la inteligencia artificial y el diseño. Su apoyo es crucial: cualquier donación, por pequeña que sea, me permitirá seguir creando y continuando con el desarrollo de aplicaciones que inspiren y conecten a nuestra comunidad. Juntos, podemos hacer magia con la tecnología.<br> ¡Gracias por ser parte de este sueño!
+                </div>
+                <div class="modal-footer">
+                    <form class="paypal-button" action="https://www.paypal.com/donate" method="post" target="_top">
+                        <input type="hidden" name="hosted_button_id" value="ST8FCTMU5XYFC" />
+                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                        <img alt="" border="0" src="https://www.paypal.com/en_CO/i/scr/pixel.gif" width="1" height="1" />
+                        <button class="btn-warning" onclick="window.open('https://checkout.wompi.co/l/tFaG95', '_blank')">Donar con Wompi</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.onload = function() {
+            var myModal = new bootstrap.Modal(document.getElementById('servicesModal'));
+            myModal.show();
+        };
+    </script>
+    <!-- Fondo animado con figuras movibles -->
+    <div id="background">
+        <div class="figure figure1"></div>
+        <div class="figure figure2"></div>
+        <div class="figure figure3"></div>
+    </div>
+    <!-- Botones laterales -->
+    <div class="sidebar-buttons">
+        <a href="https://www.tiktok.com/@ia_monetiza"><img src="images/tk.png" alt="TikTok"></a>
+        <a href="https://web.facebook.com/share/r/1GuBNobS2w/"><img src="images/fb.png" alt="YouTube"></a>
+        <a href="https://wa.link/26j6re"><img src="images/wt.png" alt="Facebook"></a>
+        <a href="https://www.youtube.com/@IaMonetizac%C3%B3n"><img src="images/yt.png" alt="Facebook"></a>
+    </div>
+    <!-- Navbar con el ícono del carrito -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="btn btn-light btn-animated" onclick="window.location.href='index.html'">
+            <i class="fas fa-arrow-left"></i> Regresar
+        </button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="cart-icon" onclick="toggleCart()">Carrito <span class="badge badge-warning" id="cart-count">0</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="toggleCart()">Total: $<span id="cart-total">0.00</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Contenedor lateral (off-canvas) para mostrar los productos del carrito -->
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h5>Carrito de Compras</h5>
+            <button class="close-btn" onclick="closeCart()">×</button>
+        </div>
+        <div class="cart-body" id="cart-items">
+            <!-- Aquí se mostrarán los productos añadidos -->
+        </div>
+        <div class="cart-footer">
+            <h6>Total: $<span id="cart-total-sidebar">0.00</span></h6>
+
+            <button class="btn btn-success btn-block">Finalizar Compra</button>
+            <p>
+            <form class="paypal-button" action="https://www.paypal.com/donate" method="post" target="_top">
+                        <input type="hidden" name="hosted_button_id" value="ST8FCTMU5XYFC" />
+                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                        <img alt="" border="0" src="https://www.paypal.com/en_CO/i/scr/pixel.gif" width="1" height="1" />
+                        <button class="btn-warning" onclick="window.open('https://checkout.wompi.co/l/tFaG95', '_blank')">Donar con Wompi</button>
+                    </form></p>
+        </div>
+    </div>
+    <div id="cart-overlay" class="cart-overlay" onclick="closeCart()"></div>
+    <!-- Contenido principal -->
+    <div class="container">
+        <h1 class="my-4 text-center">Nuevos Lanzamientos</h1>
+        <!-- Fila 1 -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="images/123.png" class="card-img-top" alt="Social Cash Flow">
+                    <div class="card-body">
+                        <h5 class="card-title">Social Cash Flow</h5>
+                        <p class="card-text">Precio: $18.50 USD / 77,000 COP</p>
+                        <p class="card-text">¡Monetiza tus redes sociales! Aprende a crear contenido cautivador y atraer seguidores. Impulsado por inteligencia artificial.</p>
+                        <button class="btn btn-primary" onclick="addToCart('Social Cash Flow', 29.99)">Agregar al Carrito</button>
+                        <button class="custom-button" onclick="redirectToCheckout1()">
+    <span class="icon"></span> Comprar</button>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="images/web.png" class="card-img-top" alt="Web Wealth Mastery">
+                    <div class="card-body">
+                        <h5 class="card-title">Tu Sitio Web</h5>
+                        <p class="card-text">Precio: $36.99 USD / 155,000 COP</p>
+                        <p class="card-text">Aprenderás a integrar IA en cada aspecto de tu sitio web, desde la creación hasta la monetización efectiva.</p>
+                        <button class="btn btn-primary" onclick="addToCart('Web Wealth Mastery', 39.99)">Agregar al Carrito</button>
+                        <button class="custom-button" onclick="redirectToCheckout2()">
+    <span class="icon"></span> Comprar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="images/android.png" class="card-img-top" alt="App Builder Pro">
+                    <div class="card-body">
+                        <h5 class="card-title">App Builder Pro <h9> Descuento </h9></h5>
+                        <p class="card-text">Precio: $54.50 USD / 230,000 COP</p>
+                        <p class="card-text">Aprende, emprender, desarrolla tu idea y conviertela en un negocio exitoso. Anuncios, funcionalidad y backend.</p>
+                        <button class="btn btn-primary" onclick="addToCart('App Builder Pro', 49.99)">Agregar al Carrito</button>
+                        <button class="custom-button" onclick="redirectToCheckout3()">
+    <span class="icon"></span> Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fila 2 -->
+        <h1 class="my-4 text-center">Productos Gratuitos</h1>
+        <div class="row my-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="images/tk.png" class="card-img-top" alt="Gestión Financiera">
+                    <div class="card-body">
+                        <h5 class="card-title">TIKTOK</h5>
+                        <p class="card-text">Aprende a crear Tiktok en otras regiones, uso de vpn y monetización en Latinoamérica.</p>
+                        <a href="" download="imagen_descargada.png" class="btn btn-primary"> Descargar PDF</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="images/vpn.png" class="card-img-top" alt="VPN">
+                    <div class="card-body">
+                        <h5 class="card-title">VPN</h5>
+                        <p class="card-text">Qué es, cómo utlizar. Implementación para crear las cuentas que desees.</p>
+                        <a href="" download="imagen_descargada.png" class="btn btn-primary"> Descargar PDF</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="images/ios3.png" class="card-img-top" alt="Creatividad y Productividad">
+                    <div class="card-body">
+                        <h5 class="card-title">Creatividad y Productividad</h5>
+                        <p class="card-text">Enseñansa basica, uso de Inteligencia artificial para cualquier requerimiento.<br></p>
+                        <a href="" download="imagen_descargada.png" class="btn btn-primary"> Descargar PDF</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function redirectToCheckout1() {
+    window.location.href = "https://checkout.wompi.co/l/test_u8cKJN";
+}
+function redirectToCheckout2() {
+    window.location.href = "https://checkout.wompi.co/l/test_zO2I6C";
+}
+function redirectToCheckout3() {
+    window.location.href = "https://checkout.wompi.co/l/test_RFzxse";
+}
+
+    var cart = [];
+    var cartCount = 0;
+    var cartTotal = 0;
+    const maxItems = 10; // Máximo de artículos permitidos en el carrito
+
+    function toggleCart() {
+        var cartSidebar = document.getElementById('cart-sidebar');
+        var cartOverlay = document.getElementById('cart-overlay');
+        if (cartSidebar.style.right === '0px') {
+            cartSidebar.style.right = '-300px'; // Oculta el carrito
+            cartOverlay.style.display = 'none'; // Oculta el fondo
+        } else {
+            cartSidebar.style.right = '0px'; // Muestra el carrito
+            cartOverlay.style.display = 'block'; // Muestra el fondo
+        }
+    }
+
+    function closeCart() {
+        var cartSidebar = document.getElementById('cart-sidebar');
+        var cartOverlay = document.getElementById('cart-overlay');
+        cartSidebar.style.right = '-300px'; // Oculta el carrito
+        cartOverlay.style.display = 'none'; // Oculta el fondo
+    }
+
+    function addToCart(productName, productPrice) {
+        // Verifica si el carrito ya tiene el máximo de artículos
+        if (cartCount < maxItems) {
+            cart.push({ name: productName, price: productPrice });
+            cartCount++;
+            cartTotal += productPrice;
+            updateCart();
+        } else {
+            alert("No puedes agregar más de " + maxItems + " artículos al carrito.");
+        }
+    }
+
+    function updateCart() {
+        var cartItemsDiv = document.getElementById('cart-items');
+        var cartCountSpan = document.getElementById('cart-count');
+        var cartTotalSpan = document.getElementById('cart-total');
+        var cartTotalSidebarSpan = document.getElementById('cart-total-sidebar');
+        cartItemsDiv.innerHTML = ''; // Limpia los elementos actuales
+
+        cart.forEach(function(item, index) {
+            cartItemsDiv.innerHTML += '<div>' + item.name + ' - $' + item.price.toFixed(2) + '</div>';
+        });
+
+        cartCountSpan.textContent = cartCount;
+        cartTotalSpan.textContent = cartTotal.toFixed(2); // Actualiza el total en la barra de navegación
+        cartTotalSidebarSpan.textContent = cartTotal.toFixed(2); // Actualiza el total en la barra lateral
+    }
+
+    // Ejemplo de cómo agregar productos (puedes personalizar esta función según tus necesidades)
+    function exampleAddToCart() {
+        addToCart('Producto Ejemplo', 19.99); // Llama a esta función para agregar un producto de ejemplo
+    }
+</script>
+<script src="app.js"></script> <!-- Enlaza tu archivo JavaScript -->
+</body>
+</html>
